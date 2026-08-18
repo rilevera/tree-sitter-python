@@ -26,6 +26,7 @@ WASM artifact from a clean state with:
 
 ```sh
 make parser-clean
+make test
 make parser-build
 ```
 
@@ -43,10 +44,10 @@ Each version command updates `package.json` and `tree-sitter.json` together.
 
 ```sh
 bun install
-bun run test
+make test
 make build
 ```
 
-`make build` always regenerates the grammar and parser sources before writing
-the committed package artifact to `tree-sitter-python.wasm` at the repository
-root.
+`make build` always regenerates the grammar and parser sources, runs the grammar
+tests, and then writes the committed package artifact to
+`tree-sitter-python.wasm` at the repository root.

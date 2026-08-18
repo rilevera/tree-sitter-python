@@ -39,7 +39,7 @@
   },
   "scripts": {
     "build": "make parser-build",
-    "test": "tree-sitter test"
+    "test": "make test"
   },
   "devDependencies": {
     "tree-sitter-cli": "0.26.11"

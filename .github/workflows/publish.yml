@@ -24,9 +24,7 @@ jobs:
           scope: "@rilevera"
       - name: Install dependencies
         run: bun install --frozen-lockfile
-      - name: Test grammar
-        run: bun run test
-      - name: Build WASM
+      - name: Build and test WASM
         run: make build
       - name: Publish package
         run: bun publish

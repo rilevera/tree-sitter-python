@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.NOTPARALLEL: build parser-build
+.NOTPARALLEL: build parser-build test
 
 WASM_NAME := tree-sitter-python
 WASM := $(WASM_NAME).wasm
@@ -10,7 +10,7 @@ PARSER := $(SRC_DIR)/parser.c
 PARSER_DEPS := $(PARSER) $(wildcard $(SRC_DIR)/scanner.c $(SRC_DIR)/scanner.cc)
 TS := bun run tree-sitter
 
-.PHONY: help install clean build parser-clean parser-generate parser-build ts-version set-version bump-minor bump-patch FORCE
+.PHONY: help install clean build test parser-clean parser-generate parser-build ts-version set-version bump-minor bump-patch FORCE
 
 help: ## List available commands
 	@awk 'BEGIN {FS = ":.*## "; printf "Usage: make <command>\n\nCommands:\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-14s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -26,7 +26,10 @@ clean: parser-clean ## Remove parser compilation artifacts
 
 parser-generate: $(PARSER) ## Regenerate grammar and parser sources
 
-parser-build: install ts-version parser-clean parser-generate $(WASM) ## Generate the parser and build the WASM artifact
+test: install parser-generate ## Regenerate the parser and run grammar tests
+	$(TS) test
+
+parser-build: install ts-version parser-clean parser-generate test $(WASM) ## Generate, test, and build the WASM artifact
 
 build: parser-build ## Fully rebuild the WASM artifact
 

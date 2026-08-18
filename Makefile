@@ -15,7 +15,8 @@ TS := bun run tree-sitter
 help: ## List available commands
 	@awk 'BEGIN {FS = ":.*## "; printf "Usage: make <command>\n\nCommands:\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-14s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-install: ## Install dependencies from the Bun lockfile
+install: ## Validate Bun and install dependencies from the lockfile
+	@bun scripts/check-bun-version.ts
 	@bun install --frozen-lockfile
 
 parser-clean: ## Remove parser compilation artifacts

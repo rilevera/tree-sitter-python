@@ -21,6 +21,8 @@ both resolve to the WASM artifact.
 
 ## Development
 
+Development and publishing require Bun `>=1.3.6 <1.3.12`.
+
 Run `make` to list the repository commands. Rebuild the generated parser and
 WASM artifact from a clean state with:
 

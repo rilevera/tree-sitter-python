@@ -1,8 +1,8 @@
 # @rilevera/tree-sitter-python
 
 Rilevera's WebAssembly distribution of the Python grammar for [tree-sitter].
-The package contains the compiled `tree-sitter-python.wasm` grammar and no
-native language bindings.
+The package contains the compiled `tree-sitter-python.wasm` grammar, its
+TypeScript path declaration, and no native language bindings.
 
 [tree-sitter]: https://tree-sitter.github.io/tree-sitter/
 

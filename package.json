@@ -19,12 +19,21 @@
     "url": "git+https://github.com/rilevera/tree-sitter-python.git"
   },
   "main": "./tree-sitter-python.wasm",
+  "types": "./tree-sitter-python.wasm.d.ts",
   "exports": {
-    ".": "./tree-sitter-python.wasm",
-    "./tree-sitter-python.wasm": "./tree-sitter-python.wasm"
+    ".": {
+      "types": "./tree-sitter-python.wasm.d.ts",
+      "default": "./tree-sitter-python.wasm"
+    },
+    "./tree-sitter-python.wasm": {
+      "types": "./tree-sitter-python.wasm.d.ts",
+      "default": "./tree-sitter-python.wasm"
+    }
   },
   "files": [
-    "tree-sitter-python.wasm"
+    "tree-sitter-python.wasm",
+    "tree-sitter-python.wasm.d.ts",
+    "LICENSE"
   ],
   "keywords": [
     "incremental",

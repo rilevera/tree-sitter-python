@@ -24,9 +24,7 @@ jobs:
         with:
           registry-url: https://npm.pkg.github.com
           scope: "@rilevera"
-      - name: Build and test WASM
-        run: make build
-      - name: Publish package
-        run: bun publish
+      - name: Build, test, and publish package
+        run: make publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

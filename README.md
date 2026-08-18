@@ -43,6 +43,11 @@ make bump-patch
 ```
 
 Each version command updates `package.json` and `tree-sitter.json` together.
+Build, test, and publish the configured version to GitHub Packages with:
+
+```sh
+make publish
+```
 
 ```sh
 bun install

@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-python",
-  "version": "0.25.0",
-  "description": "Python grammar for tree-sitter",
-  "repository": "https://github.com/tree-sitter/tree-sitter-python",
+  "name": "@rilevera/tree-sitter-python",
+  "version": "1.0.1",
+  "packageManager": "bun@1.3.11",
+  "description": "Python grammar for tree-sitter, distributed as WebAssembly",
   "license": "MIT",
   "author": {
     "name": "Max Brunsfeld",
@@ -14,47 +14,48 @@
       "email": "amaanq12@gmail.com"
     }
   ],
-  "main": "bindings/node",
-  "types": "bindings/node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rilevera/tree-sitter-python.git"
+  },
+  "main": "./tree-sitter-python.wasm",
+  "types": "./tree-sitter-python.wasm.d.ts",
+  "exports": {
+    ".": {
+      "types": "./tree-sitter-python.wasm.d.ts",
+      "default": "./tree-sitter-python.wasm"
+    },
+    "./tree-sitter-python.wasm": {
+      "types": "./tree-sitter-python.wasm.d.ts",
+      "default": "./tree-sitter-python.wasm"
+    }
+  },
+  "files": [
+    "tree-sitter-python.wasm",
+    "tree-sitter-python.wasm.d.ts",
+    "LICENSE"
+  ],
   "keywords": [
     "incremental",
     "parsing",
     "tree-sitter",
-    "python"
+    "python",
+    "webassembly",
+    "wasm"
   ],
-  "files": [
-    "grammar.js",
-    "tree-sitter.json",
-    "binding.gyp",
-    "prebuilds/**",
-    "bindings/node/*",
-    "queries/*",
-    "src/**",
-    "*.wasm"
-  ],
-  "dependencies": {
-    "node-addon-api": "^8.5.0",
-    "node-gyp-build": "^4.8.4"
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
-  "devDependencies": {
-    "eslint": "^9.35.0",
-    "eslint-config-treesitter": "^1.0.2",
-    "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.25.9"
-  },
-  "peerDependencies": {
-    "tree-sitter": "^0.25.0"
-  },
-  "peerDependenciesMeta": {
-    "tree-sitter": {
-      "optional": true
-    }
+  "engines": {
+    "bun": ">=1.3.6 <1.3.12"
   },
   "scripts": {
-    "install": "node-gyp-build",
-    "lint": "eslint grammar.js",
-    "prestart": "tree-sitter build --wasm",
-    "start": "tree-sitter playground",
-    "test": "node --test bindings/node/*_test.js"
+    "check:bun": "bun run scripts/check-bun-version.ts",
+    "build": "make parser-build",
+    "test": "make test"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "0.26.11"
   }
 }

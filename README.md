@@ -27,12 +27,14 @@ Run `make` to list the repository commands. Rebuild the generated parser and
 WASM artifact from a clean state with:
 
 ```sh
-make parser-clean
-make test
-make parser-build
+make build
 ```
 
-`make clean` and `make build` are shorter aliases for those commands.
+`make build` always regenerates the grammar and parser sources, runs the
+grammar tests, and then writes the committed package artifact to
+`tree-sitter-python.wasm` at the repository root.
+
+## Releasing
 
 Package versions can be changed with:
 
@@ -43,18 +45,12 @@ make bump-patch
 ```
 
 Each version command updates `package.json` and `tree-sitter.json` together.
-Build, test, and publish the configured version to GitHub Packages with:
+Commit the version bump, then push a matching tag. Pushing a tag triggers the
+`Publish package` GitHub Actions workflow, which builds, tests, and publishes
+the package to GitHub Packages.
+
+To publish locally instead, run:
 
 ```sh
 make publish
 ```
-
-```sh
-bun install
-make test
-make build
-```
-
-`make build` always regenerates the grammar and parser sources, runs the grammar
-tests, and then writes the committed package artifact to
-`tree-sitter-python.wasm` at the repository root.

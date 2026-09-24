@@ -1,8 +1,9 @@
 node_modules/
 
-# Tree-sitter build artifacts other than the committed WASM package
+# Tree-sitter build artifacts (built locally via `make build`, not committed)
 *.obj
 *.o
+/tree-sitter-python.wasm
 
 # Package archives
 *.tar.gz

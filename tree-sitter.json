@@ -5,14 +5,16 @@
       "camelcase": "Python",
       "scope": "source.python",
       "path": ".",
-      "file-types": ["py"],
+      "file-types": [
+        "py"
+      ],
       "highlights": "queries/highlights.scm",
       "tags": "queries/tags.scm",
       "injection-regex": "py"
     }
   ],
   "metadata": {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "MIT",
     "description": "Python grammar for tree-sitter",
     "authors": [

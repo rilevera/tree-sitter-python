@@ -8,6 +8,8 @@
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z_]*$"))
 
+(attribute attribute: (identifier) @property)
+
 ; Function calls
 
 (decorator) @function
@@ -32,7 +34,6 @@
 (function_definition
   name: (identifier) @function)
 
-(attribute attribute: (identifier) @property)
 (type (identifier) @type)
 
 ; Literals
@@ -51,6 +52,22 @@
 (comment) @comment
 (string) @string
 (escape_sequence) @escape
+
+; Function arguments
+
+(call
+  arguments: (argument_list
+    [
+      (string) @string.function_arg
+      (keyword_argument
+        name: (identifier) @keyword_arg
+        value: (string) @string.keyword_arg)
+    ]))
+
+(call
+  arguments: (argument_list
+    "(" @punctuation.arg_open
+    ")" @punctuation.arg_close))
 
 (interpolation
   "{" @punctuation.special

@@ -13,3 +13,5 @@ event.deep_get("source", "ip", "network")
             #            ^ string.function_arg
             #                   ^ string.function_arg
             #                           ^ punctuation.arg_close
+event.deep_get(retries=3)
+              #^ keyword_arg

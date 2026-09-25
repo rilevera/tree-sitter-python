@@ -60,7 +60,8 @@
     [
       (string) @string.function_arg
       (keyword_argument
-        name: (identifier) @keyword_arg
+        name: (identifier) @keyword_arg)
+      (keyword_argument
         value: (string) @string.keyword_arg)
     ]))
 
